@@ -15,6 +15,10 @@ erl_crash.dump
 # this depending on your deployment strategy.
 /priv/static/
 
+# Since we are building Elm assets from web/elm,
+# we ignore web/static/vendor
+/web/static/vendor
+
 # The config/prod.secret.exs file by default contains sensitive
 # data and you should not commit it into version control.
 #
