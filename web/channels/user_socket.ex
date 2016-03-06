@@ -3,6 +3,7 @@ defmodule ElmTime.UserSocket do
 
   ## Channels
   # channel "rooms:*", ElmTime.RoomChannel
+  channel "times:lobby", ElmTime.MyTimeChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
