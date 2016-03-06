@@ -3,10 +3,20 @@ defmodule ElmTime.MyTimeChannel do
 
   def join("times:lobby", payload, socket) do
     if authorized?(payload) do
+
+      # http://www.cultivatehq.com/posts/phoenix-elm-11/
+      # Sending self() a message inside a channel results in a call to handle_info/2.
+      send self(), :after_join
+
       {:ok, socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
+  end
+
+  def handle_info(:after_join, socket) do
+    push socket, "the_time", %{the_time: (inspect :calendar.local_time)}
+    {:noreply, socket}
   end
 
   # Channels can be used in a request/response fashion
