@@ -21,4 +21,5 @@ import "phoenix_html"
 import socket from "./socket"
 
 var elmDiv = document.getElementById('elm-main')
-  , elmApp = Elm.embed(Elm.MyTime, elmDiv);
+  , initialState = {the_time: "{{0, 0, 0}, {0, 0, 0}}"}
+  , elmApp = Elm.embed(Elm.MyTime, elmDiv, initialState);
