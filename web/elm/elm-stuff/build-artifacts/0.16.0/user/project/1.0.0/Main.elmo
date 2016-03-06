@@ -1,8 +1,8 @@
-Elm.MyTime = Elm.MyTime || {};
-Elm.MyTime.make = function (_elm) {
+Elm.Main = Elm.Main || {};
+Elm.Main.make = function (_elm) {
    "use strict";
-   _elm.MyTime = _elm.MyTime || {};
-   if (_elm.MyTime.values) return _elm.MyTime.values;
+   _elm.Main = _elm.Main || {};
+   if (_elm.Main.values) return _elm.Main.values;
    var _U = Elm.Native.Utils.make(_elm),
    $Basics = Elm.Basics.make(_elm),
    $Debug = Elm.Debug.make(_elm),
@@ -41,11 +41,11 @@ Elm.MyTime.make = function (_elm) {
    var main = $StartApp$Simple.start({model: model
                                      ,view: view
                                      ,update: update});
-   return _elm.MyTime.values = {_op: _op
-                               ,main: main
-                               ,model: model
-                               ,view: view
-                               ,Increment: Increment
-                               ,Decrement: Decrement
-                               ,update: update};
+   return _elm.Main.values = {_op: _op
+                             ,main: main
+                             ,model: model
+                             ,view: view
+                             ,Increment: Increment
+                             ,Decrement: Decrement
+                             ,update: update};
 };
