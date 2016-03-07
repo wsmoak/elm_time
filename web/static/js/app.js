@@ -23,3 +23,15 @@ import socket from "./socket"
 var elmDiv = document.getElementById('elm-main')
   , initialState = {the_time: "{{0, 0, 0}, {0, 0, 0}}"}
   , elmApp = Elm.embed(Elm.MyTime, elmDiv, initialState);
+
+// Now that you are connected, you can join channels with a topic:
+let channel = socket.channel("times:lobby", {})
+channel.join()
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) })
+
+channel.on('the_time', data => {
+  console.log('got the time', data.the_time)
+  elmApp.ports.the_time.send(data.the_time)
+})
+
