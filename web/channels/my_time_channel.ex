@@ -7,6 +7,7 @@ defmodule ElmTime.MyTimeChannel do
       # http://www.cultivatehq.com/posts/phoenix-elm-11/
       # Sending self() a message inside a channel results in a call to handle_info/2.
       send self(), :after_join
+      send self(), :something_happened
 
       {:ok, socket}
     else
@@ -15,7 +16,13 @@ defmodule ElmTime.MyTimeChannel do
   end
 
   def handle_info(:after_join, socket) do
+    push socket, "the_time", %{the_time: "Welcome! "<>(inspect :calendar.local_time)}
+    {:noreply, socket}
+  end
+
+  def handle_info(:something_happened, socket) do
     push socket, "the_time", %{the_time: (inspect :calendar.local_time)}
+    Process.send_after(self, :something_happened, Enum.random(1..10) * 1000 )
     {:noreply, socket}
   end
 
