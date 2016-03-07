@@ -1,20 +1,22 @@
 # ElmTime
 
-To start your Phoenix app:
+Example of using Elm with Phoenix Channels
+
+See http://www.cultivatehq.com/posts/phoenix-elm-11/ (and previous articles)
+
+Further inspiration from [@jfcloutier](https://twitter.com/jfcloutier) in http://files.meetup.com/17314552/february_23_2016.pdf
+
+To start the Phoenix app:
 
   * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `npm install`
   * Start Phoenix endpoint with `mix phoenix.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+Open the JavaScript developer console and you will see
+  * it join the channel,
+  * after which the Phoenix app will push a "Welcome" message,
+  * and then additional messages at random 1-10 second intervals
 
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: http://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+The "message" it displays is simply the date and time from `:calendar.local_time`.
