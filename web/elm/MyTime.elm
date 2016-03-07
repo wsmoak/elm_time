@@ -3,7 +3,7 @@ module MyTime where
 import Html exposing (..)
 import Html.Events exposing (onClick)
 import StartApp
-import Effects exposing (..)
+import Effects exposing (Effects, Never)
 
 init : (Model, Effects Action)
 init =
@@ -30,8 +30,9 @@ model = ""
 view : Signal.Address Action -> Model -> Html
 view address model =
   div []
-    [
-      div [] [ text model ]
+    [ text "Before",
+      div [] [ text model ],
+      text "After"
     ]
 
 
